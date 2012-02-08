@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/xcode/Config
+END
+StaticLibraryTarget.xcconfig
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/xcode/Config/StaticLibraryTarget.xcconfig
+END
+FrameworkTarget.xcconfig
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/xcode/Config/FrameworkTarget.xcconfig
+END
+TestTarget.xcconfig
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/xcode/Config/TestTarget.xcconfig
+END
+ReleaseProject.xcconfig
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/xcode/Config/ReleaseProject.xcconfig
+END
+DebugProject.xcconfig
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/xcode/Config/DebugProject.xcconfig
+END
+General.xcconfig
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/xcode/Config/General.xcconfig
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/build-aux
+END
+config.h.in
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/build-aux/config.h.in
+END
+depcomp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/build-aux/depcomp
+END
+missing
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/build-aux/missing
+END
+config.guess
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/build-aux/config.guess
+END
+config.sub
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/build-aux/config.sub
+END
+ltmain.sh
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/build-aux/ltmain.sh
+END
+install-sh
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/cone-cooperation/svn/!svn/ver/1617/stein_code/external/gtest_1_6_0/gtest/build-aux/install-sh
+END
