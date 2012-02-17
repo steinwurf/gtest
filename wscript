@@ -3,7 +3,22 @@
 
 import os
 
-from waflib.extras import wurftools
+# Necessary since we override different Contexts 
+import waflib.extras.wurftools as wt
+
+def options(opt):
+    opt.load('wurftools')
+
+def configure(conf):
+
+    conf.load('wurftools')
+
+    if conf.env.TOOLCHAIN != 'android':
+        conf.check_cxx(lib = 'pthread')
+
+    if conf.env['TOOLCHAIN'] == 'android':
+	    conf.env.DEFINES += ['GTEST_OS_LINUX_ANDROID=1']
+
 
 def build(bld):
 
@@ -19,17 +34,5 @@ def build(bld):
               export_includes = ['gtest/include'],
               use = ['pthread'])
     
-def options(opt):
-    opt.load('wurftools')
-
-def configure(conf):
-
-    conf.load('wurftools')
-
-    if conf.env.TOOLCHAIN != 'android':
-        conf.check_cxx(lib='pthread')
-
-    if conf.env['TOOLCHAIN'] == 'android':
-	    conf.env.DEFINES += ['GTEST_OS_LINUX_ANDROID=1']
 
 
