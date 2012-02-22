@@ -23,7 +23,10 @@ def configure(conf):
 def build(bld):
 
     if bld.env.TOOLCHAIN != 'android':
-        bld.read_shlib('pthread')
+
+        ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
+        
+        bld.read_shlib('pthread', paths = ext_paths)
 
     
     bld.stlib(features = 'cxx',
