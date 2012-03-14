@@ -30,7 +30,16 @@ def build(bld):
         
         bld.read_shlib('pthread', paths = ext_paths)
         use_flags += ['pthread']
-        
+
+        bld.env.CXXFLAGS_GTEST_FLAGS = ['-O2', '-g', '-ftree-vectorize', '-Wextra', '-Wall']
+
+        use_flags += ['GTEST_FLAGS']
+
+    if bld.env.TOOLCHAIN == 'win32':
+
+        bld.env.CXXFLAGS_GTEST_FLAGS = ['/O2', '/Ob2', '/W3', '/EHs']
+
+        use_flags += ['GTEST_FLAGS']
     
     bld.stlib(features = 'cxx',
 	      source   = ['gtest/src/gtest-all.cc'],
