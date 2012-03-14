@@ -13,7 +13,7 @@ def configure(conf):
 
     conf.load('wurftools')
 
-    if conf.env.TOOLCHAIN != 'android':
+    if conf.env.TOOLCHAIN == 'linux':
         conf.check_cxx(lib = 'pthread')
 
     if conf.env['TOOLCHAIN'] == 'android':
@@ -22,12 +22,15 @@ def configure(conf):
 
 def build(bld):
 
-    if bld.env.TOOLCHAIN != 'android':
+    use_flags = []
+
+    if bld.env.TOOLCHAIN == 'linux':
 
         ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
         
         bld.read_shlib('pthread', paths = ext_paths)
-
+        use_flags += ['pthread']
+        
     
     bld.stlib(features = 'cxx',
 	      source   = ['gtest/src/gtest-all.cc'],
@@ -35,7 +38,7 @@ def build(bld):
 	      includes = ['gtest/include',
                           'gtest'],
               export_includes = ['gtest/include'],
-              use = ['pthread'])
+              use = use_flags)
     
 
 
