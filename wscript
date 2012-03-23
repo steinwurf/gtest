@@ -3,6 +3,8 @@
 
 import os
 
+VERSION = '1.0.3'
+
 def options(opt):
     opt.load('toolchain_cxx')
 
