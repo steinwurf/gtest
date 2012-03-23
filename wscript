@@ -3,15 +3,12 @@
 
 import os
 
-# Necessary since we override different Contexts
-import waflib.extras.wurftools as wt
-
 def options(opt):
-    opt.load('wurftools')
+    opt.load('toolchain_cxx')
 
 def configure(conf):
 
-    conf.load('wurftools')
+    conf.load('toolchain_cxx')
 
     if conf.env.TOOLCHAIN == 'linux':
         conf.check_cxx(lib = 'pthread')
