@@ -30,6 +30,10 @@ def build(bld):
         bld.read_shlib('pthread', paths = ext_paths)
         use_flags += ['pthread']
 
+    # Change this when we hit c++11
+    bld.env.DEFINES_GTEST_SHARED = ['GTEST_HAS_TR1_TUPLE=0']
+
+    use_flags += ['GTEST_SHARED']
 
     bld.stlib(features = 'cxx',
 	      source   = ['gtest/src/gtest-all.cc'],
@@ -37,7 +41,6 @@ def build(bld):
               cxxflags = bld.toolchain_cxx_flags(),
 	      includes = ['gtest/include',
                           'gtest'],
-              defines = 'GTEST_HAS_TR1_TUPLE=0', # change this when we hit c++11
               export_includes = ['gtest/include'],
               use = use_flags)
 
