@@ -3,7 +3,7 @@ About
 
 We use Google C++ Testing Framework to test most of our libraries.
 
-We use Waf to cross-compile boost for the different platforms
+We use Waf to cross-compile gtest for the different platforms
 we support. For that reason we provide the Waf and wscript files
 needed to build the gtest library.
 
