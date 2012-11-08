@@ -8,6 +8,10 @@ master
 ------
 * tbd
 
+2.0.1
+-----
+* Updated platform information in mkspec
+
 2.0.0
 -----
 * Switched to new mkspec based builds
