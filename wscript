@@ -6,41 +6,57 @@ import os
 VERSION = '1.0.4'
 
 def options(opt):
-    opt.load('toolchain_cxx')
+
+    opt.load("dependency_bundle")
+
+    import waflib.extras.dependency_bundle as bundle
+    import waflib.extras.dependency_resolve as resolve
+
+    bundle.add_dependency(opt,
+        resolve.ResolveGitMajorVersion(
+            name='mkspec',
+            git_repository = 'git://github.com/steinwurf/external-waf-mkspec.git',
+            major_version = 1))
+
+    opt.load('wurf_cxx_mkspec')
+
 
 def configure(conf):
 
-    conf.load('toolchain_cxx')
+    if conf.is_toplevel():
+        conf.load("dependency_bundle")
+        conf.load("wurf_cxx_mkspec")
 
-    if conf.env.TOOLCHAIN == 'linux':
-        conf.check_cxx(lib = 'pthread')
+    if conf.env['MKSPEC_PLATFORM'] == 'linux':
 
-    if conf.env['TOOLCHAIN'] == 'android':
-	    conf.env.DEFINES += ['GTEST_OS_LINUX_ANDROID=1']
+        if not conf.env['LIB_PTHREAD']:
+
+            # If we have not looked for pthread yet
+            conf.check_cxx(lib = 'pthread')
+
+    if conf.env['MKSPEC_PLATFORM'] == 'android':
+        conf.env.DEFINES += ['GTEST_OS_LINUX_ANDROID=1']
 
 
 def build(bld):
 
     use_flags = []
 
-    if bld.env.TOOLCHAIN == 'linux':
-
+    if bld.env['MKSPEC_PLATFORM'] == 'linux':
         ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
 
         bld.read_shlib('pthread', paths = ext_paths)
         use_flags += ['pthread']
 
     # Change this when we hit c++11
-    bld.env.DEFINES_GTEST_SHARED = ['GTEST_HAS_TR1_TUPLE=0']
+    bld.env['DEFINES_GTEST_SHARED'] = ['GTEST_HAS_TR1_TUPLE=0']
 
     use_flags += ['GTEST_SHARED']
 
     bld.stlib(features = 'cxx',
 	      source   = ['gtest/src/gtest-all.cc'],
 	      target   = 'gtest',
-              cxxflags = bld.toolchain_cxx_flags(),
-	      includes = ['gtest/include',
-                          'gtest'],
+	      includes = ['gtest/include', 'gtest'],
               export_includes = ['gtest/include'],
               use = use_flags)
 
