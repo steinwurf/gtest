@@ -27,14 +27,16 @@ def configure(conf):
         conf.load("dependency_bundle")
         conf.load("wurf_cxx_mkspec")
 
-    if conf.env['MKSPEC_PLATFORM'] == 'linux':
+    mkspec_options = conf.env["cxx_mkspec_options"]
+
+    if mkspec_options['MKSPEC_PLATFORM'] == 'linux':
 
         if not conf.env['LIB_PTHREAD']:
 
             # If we have not looked for pthread yet
             conf.check_cxx(lib = 'pthread')
 
-    if conf.env['MKSPEC_PLATFORM'] == 'android':
+    if mkspec_options['MKSPEC_PLATFORM'] == 'android':
         conf.env.DEFINES += ['GTEST_OS_LINUX_ANDROID=1']
 
 
@@ -42,7 +44,9 @@ def build(bld):
 
     use_flags = []
 
-    if bld.env['MKSPEC_PLATFORM'] == 'linux':
+    mkspec_options = conf.env["cxx_mkspec_options"]
+
+    if mkspec_options['MKSPEC_PLATFORM'] == 'linux':
         ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
 
         bld.read_shlib('pthread', paths = ext_paths)
