@@ -4,8 +4,12 @@ News for external-gtest
 This file lists the major changes between versions. For a more detailed list
 of every change, see the Git log.
 
-master (major)
---------------
+master
+------
+* tbd
+
+2.0.0
+-----
 * Switched to new mkspec based builds
 
 1.0.4
