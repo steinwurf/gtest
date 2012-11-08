@@ -44,7 +44,7 @@ def build(bld):
 
     use_flags = []
 
-    mkspec_options = conf.env["cxx_mkspec_options"]
+    mkspec_options = bld.env["cxx_mkspec_options"]
 
     if mkspec_options['MKSPEC_PLATFORM'] == 'linux':
         ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
