@@ -44,7 +44,7 @@ def build(bld):
 
     platform = bld.get_mkspec_option('MKSPEC_PLATFORM')
 
-    if conf.is_mkspec_platform('linux'):
+    if bld.is_mkspec_platform('linux'):
         ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
 
         bld.read_shlib('pthread', paths = ext_paths)
