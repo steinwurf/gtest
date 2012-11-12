@@ -13,15 +13,10 @@ def options(opt):
     import waflib.extras.dependency_resolve as resolve
 
     bundle.add_dependency(opt,
-        resolve.ResolveGitFollowMaster(
+        resolve.ResolveGitMajorVersion(
             name='mkspec',
-            git_repository = 'git://github.com/steinwurf/external-waf-mkspec.git'))
-
-    # bundle.add_dependency(opt,
-    #     resolve.ResolveGitMajorVersion(
-    #         name='mkspec',
-    #         git_repository = 'git://github.com/steinwurf/external-waf-mkspec.git',
-    #         major_version = 1))
+            git_repository = 'git://github.com/steinwurf/external-waf-mkspec.git',
+            major_version = 1))
 
     opt.load('wurf_cxx_mkspec')
 
