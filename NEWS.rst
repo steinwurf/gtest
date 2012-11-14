@@ -8,6 +8,10 @@ master
 ------
 * tbd
 
+2.0.2
+-----
+* Updated waf
+
 2.0.1
 -----
 * Updated platform information in mkspec
