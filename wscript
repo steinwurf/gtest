@@ -16,7 +16,7 @@ def options(opt):
         resolve.ResolveGitMajorVersion(
             name='mkspec',
             git_repository = 'git://github.com/steinwurf/external-waf-mkspec.git',
-            major_version = 1))
+            major_version = 2))
 
     opt.load('wurf_cxx_mkspec')
 
@@ -42,7 +42,7 @@ def build(bld):
 
     use_flags = []
 
-    platform = bld.get_mkspec_option('MKSPEC_PLATFORM')
+    platform = bld.get_mkspec_platform()
 
     if bld.is_mkspec_platform('linux'):
         ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
