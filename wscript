@@ -16,7 +16,7 @@ def options(opt):
         resolve.ResolveGitMajorVersion(
             name='mkspec',
             git_repository = 'git://github.com/steinwurf/external-waf-mkspec.git',
-            major_version = 1))
+            major_version = 2))
 
     opt.load('wurf_cxx_mkspec')
 
