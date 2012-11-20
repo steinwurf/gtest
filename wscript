@@ -42,8 +42,6 @@ def build(bld):
 
     use_flags = []
 
-    platform = bld.get_mkspec_platform()
-
     if bld.is_mkspec_platform('linux'):
         ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
 
