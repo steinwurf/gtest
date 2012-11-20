@@ -7,6 +7,7 @@ VERSION = '2.0.3'
 
 def options(opt):
 
+    opt.load('waf_unit_test_v2')
     opt.load("dependency_bundle")
 
     import waflib.extras.dependency_bundle as bundle
