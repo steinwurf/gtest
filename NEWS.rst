@@ -8,6 +8,12 @@ master
 ------
 * tbd
 
+2.0.4
+-----
+* Removed unnecessary use of get_mkspec_option
+* Support waf unit test options to make handling different projects
+  easier in build automation.
+
 2.0.3
 -----
 * Updated waf
