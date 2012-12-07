@@ -7,26 +7,27 @@ VERSION = '2.0.4'
 
 def options(opt):
 
-    opt.load('waf_unit_test_v2')
-    opt.load("dependency_bundle")
-
-    import waflib.extras.dependency_bundle as bundle
-    import waflib.extras.dependency_resolve as resolve
+    import waflib.extras.wurf_dependency_bundle as bundle
+    import waflib.extras.wurf_dependency_resolve as resolve
+    import waflib.extras.wurf_configure_output
 
     bundle.add_dependency(opt,
         resolve.ResolveGitMajorVersion(
-            name='mkspec',
-            git_repository = 'git://github.com/steinwurf/external-waf-mkspec.git',
-            major_version = 2))
+            name='waf-tools',
+            git_repository = 'git://github.com/steinwurf/external-waf-tools.git',
+            major_version = 1))
 
-    opt.load('wurf_cxx_mkspec')
+    opt.load("wurf_dependency_bundle")
+    opt.load('wurf_tools')
 
 
 def configure(conf):
 
     if conf.is_toplevel():
-        conf.load("dependency_bundle")
-        conf.load("wurf_cxx_mkspec")
+        conf.load("wurf_dependency_bundle")
+        conf.load("wurf_tools")
+        conf.load_external_tool('mkspec', 'wurf_cxx_mkspec_tool')
+        conf.load_external_tool('runners', 'wurf_runner')
 
     if conf.is_mkspec_platform('linux'):
 
