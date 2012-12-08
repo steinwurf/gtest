@@ -47,7 +47,12 @@ def build(bld):
     if bld.is_mkspec_platform('linux'):
         ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
 
-        bld.read_shlib('pthread', paths = ext_paths)
+        # Check which targets have already been defined
+        try:
+            bld.get_tgen_by_name('pthread')
+        except:
+            bld.read_shlib('pthread', paths = ext_paths)
+
         use_flags += ['pthread']
 
     # Change this when we hit c++11
