@@ -8,6 +8,12 @@ master
 ------
 * tbd
 
+2.0.5
+-----
+* Added check on whether the pthread target already exists before doing 
+  issuing a read_shlib. This removes a waf warning about multiple defines for
+  the pthread library.
+
 2.0.4
 -----
 * Removed unnecessary use of get_mkspec_option
