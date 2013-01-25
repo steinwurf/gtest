@@ -6,7 +6,7 @@ of every change, see the Git log.
 
 master
 ------
-* tbd
+* Updated to waf 1.7.9 and started using the wurf_install_path tool.
 
 2.0.5
 -----

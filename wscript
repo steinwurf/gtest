@@ -28,6 +28,7 @@ def configure(conf):
         conf.load("wurf_tools")
         conf.load_external_tool('mkspec', 'wurf_cxx_mkspec_tool')
         conf.load_external_tool('runners', 'wurf_runner')
+        conf.load_external_tool('install_path', 'wurf_install_path')
 
     if conf.is_mkspec_platform('linux'):
 
