@@ -57,7 +57,7 @@ def build(bld):
         use_flags += ['pthread']
 
     # Change this when we hit c++11
-    # bld.env['DEFINES_GTEST_SHARED'] = ['GTEST_HAS_TR1_TUPLE=0']
+    bld.env['DEFINES_GTEST_SHARED'] = ['GTEST_HAS_TR1_TUPLE=0']
 
     use_flags += ['GTEST_SHARED']
 
