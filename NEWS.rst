@@ -4,13 +4,19 @@ News for external-gtest
 This file lists the major changes between versions. For a more detailed list
 of every change, see the Git log.
 
+
+2.0.6
+-----
+* Updated waf to include bundle_use_master option, and fixed an issue present
+  only without full c++11 support.
+
 master
 ------
 * Updated to waf 1.7.9 and started using the wurf_install_path tool.
 
 2.0.5
 -----
-* Added check on whether the pthread target already exists before doing 
+* Added check on whether the pthread target already exists before doing
   issuing a read_shlib. This removes a waf warning about multiple defines for
   the pthread library.
 
