@@ -63,11 +63,12 @@ def build(bld):
     use_flags += ['GTEST_SHARED']
 
     bld.stlib(features = 'cxx',
-	      source   = ['gtest/src/gtest-all.cc'],
-	      target   = 'gtest',
-	      includes = ['gtest/include', 'gtest'],
+              source   = ['gtest/src/gtest-all.cc'],
+              target   = 'gtest',
+              includes = ['gtest/include', 'gtest'],
               export_includes = ['gtest/include'],
               use = use_flags)
+
 
 
 
