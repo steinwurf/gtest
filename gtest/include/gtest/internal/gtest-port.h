@@ -481,28 +481,25 @@
 #  define BOOST_TR1_DETAIL_CONFIG_HPP_INCLUDED
 #  include <tuple>
 
-# elif defined(__GNUC__) && (GTEST_GCC_VER_ >= 40000)
-// GCC 4.0+ implements tr1/tuple in the <tr1/tuple> header.  This does
-// not conform to the TR1 spec, which requires the header to be <tuple>.
-
-#  if !GTEST_HAS_RTTI && GTEST_GCC_VER_ < 40302
-// Until version 4.3.2, gcc has a bug that causes <tr1/functional>,
-// which is #included by <tr1/tuple>, to not compile when RTTI is
-// disabled.  _TR1_FUNCTIONAL is the header guard for
-// <tr1/functional>.  Hence the following #define is a hack to prevent
-// <tr1/functional> from being included.
-#   define _TR1_FUNCTIONAL 1
-#   include <tr1/tuple>
-#   undef _TR1_FUNCTIONAL  // Allows the user to #include
-                        // <tr1/functional> if he chooses to.
-#  else
-#   include <tr1/tuple>  // NOLINT
-#  endif  // !GTEST_HAS_RTTI && GTEST_GCC_VER_ < 40302
-
 # else
 // If the compiler is not GCC 4.0+, we assume the user is using a
 // spec-conforming TR1 implementation.
 #  include <tuple>  // NOLINT
+// C++11 puts its tuple into the ::std namespace rather than
+// ::std::tr1.  gtest expects tuple to live in ::std::tr1, so put it there.
+// This causes undefined behavior, but supported compilers react in
+// the way we intend.
+namespace std
+{
+    namespace tr1
+    {
+        using ::std::get;
+        using ::std::make_tuple;
+        using ::std::tuple;
+        using ::std::tuple_element;
+        using ::std::tuple_size;
+    }
+}
 # endif  // GTEST_USE_OWN_TR1_TUPLE
 
 #endif  // GTEST_HAS_TR1_TUPLE
