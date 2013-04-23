@@ -57,8 +57,8 @@ def build(bld):
         use_flags += ['pthread']
 
     # Remove this when msvc supports variadic templates
-    if bld.is_mkspec_platform('windows'):
-        bld.env['DEFINES_GTEST_SHARED'] = ['GTEST_HAS_TR1_TUPLE=0']
+    #if bld.is_mkspec_platform('windows'):
+    #    bld.env['DEFINES_GTEST_SHARED'] = ['GTEST_HAS_TR1_TUPLE=0']
 
     use_flags += ['GTEST_SHARED']
 
