@@ -4,6 +4,10 @@ News for external-gtest
 This file lists the major changes between versions. For a more detailed list
 of every change, see the Git log.
 
+Latest
+------
+* Minor: Updated to waf-tools 2
+
 2.0.7
 -----
 * Bugfix: Always include std::tuple from <tuple> in order to compile 
