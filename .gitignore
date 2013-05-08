@@ -1,5 +1,6 @@
-.dependency_config
-.lock*
+# For projects that use Waf for building: http://code.google.com/p/waf/
+waf-*
+.waf-*
+.lock-*
 build
 bundle_dependencies
-.waf*
