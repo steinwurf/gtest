@@ -6,7 +6,13 @@ of every change, see the Git log.
 
 Latest
 ------
+* TBD
+
+2.1.0
+-----
 * Minor: Updated to waf-tools 2
+* Minor: Updated to waf 1.7.10
+* Bugfix: Replaced _NSGetEnviron() call on Mac and iOS with POSIX 'environ' variable
 
 2.0.7
 -----
@@ -18,9 +24,6 @@ Latest
 -----
 * Updated waf to include bundle_use_master option, and fixed an issue present
   only without full c++11 support.
-
-master
-------
 * Updated to waf 1.7.9 and started using the wurf_install_path tool.
 
 2.0.5
