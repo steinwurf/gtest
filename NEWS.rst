@@ -8,6 +8,10 @@ Latest
 ------
 * TBD
 
+2.1.2
+-----
+* Bugfix: Allow compilation without using a makespec
+
 2.1.1
 -----
 * Bugfix: Compile gtest without pthread support for crosslinux builds to avoid
