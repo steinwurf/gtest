@@ -8,6 +8,11 @@ Latest
 ------
 * TBD
 
+2.1.1
+-----
+* Bugfix: Compile gtest without pthread support for crosslinux builds to avoid
+  compatibility issues with the system pthread library
+
 2.1.0
 -----
 * Minor: Updated to waf-tools 2
