@@ -52,6 +52,7 @@ def build(bld):
 
         mkspec = bld.get_tool_option('cxx_mkspec')
 
+        # Crosslinux builds are incompatible with the system pthread library
         if 'crosslinux' in mkspec:
             bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_HAS_PTHREAD=0']
 
