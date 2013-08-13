@@ -49,22 +49,7 @@ def build(bld):
     use_flags = []
 
     if bld.is_mkspec_platform('linux'):
-
-        # Crosslinux builds are incompatible with the system pthread library
-        if bld.has_tool_option('cxx_mkspec') and \
-            'crosslinux' in bld.get_tool_option('cxx_mkspec'):
-            bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_HAS_PTHREAD=0']
-
-        else:
-            ext_paths = ['/usr/lib/i386-linux-gnu', '/usr/lib/x86_64-linux-gnu']
-
-            # Check which targets have already been defined
-            try:
-                bld.get_tgen_by_name('pthread')
-            except:
-                bld.read_shlib('pthread', paths = ext_paths)
-
-            use_flags += ['pthread']
+        bld.env['LINKFLAGS_GTEST_SHARED'] = ['-lpthread']
 
     # Remove this when msvc supports variadic templates
     if bld.is_mkspec_platform('windows'):
