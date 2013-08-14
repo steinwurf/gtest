@@ -21,13 +21,12 @@ def options(opt):
     opt.load("wurf_dependency_bundle")
     opt.load('wurf_tools')
 
-
 def configure(conf):
 
     if conf.is_toplevel():
         conf.load("wurf_dependency_bundle")
         conf.load("wurf_tools")
-        
+
         conf.load_external_tool('mkspec', 'wurf_cxx_mkspec_tool')
         conf.load_external_tool('runners', 'wurf_runner')
         conf.load_external_tool('install_path', 'wurf_install_path')
@@ -40,22 +39,19 @@ def configure(conf):
             # If we have not looked for pthread yet
             conf.check_cxx(lib = 'pthread')
 
-    if conf.is_mkspec_platform('android'):
-        conf.env.DEFINES += ['GTEST_OS_LINUX_ANDROID=1']
-
-
 def build(bld):
 
-    use_flags = []
+    use_flags = ['GTEST_SHARED']
 
     if bld.is_mkspec_platform('linux'):
-        bld.env['LINKFLAGS_GTEST_SHARED'] = ['-lpthread']
+        use_flags += ['PTHREAD']
 
     # Remove this when msvc supports variadic templates
     if bld.is_mkspec_platform('windows'):
-        bld.env['DEFINES_GTEST_SHARED'] = ['GTEST_HAS_TR1_TUPLE=0']
+        bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_HAS_TR1_TUPLE=0']
 
-    use_flags += ['GTEST_SHARED']
+    if bld.is_mkspec_platform('android'):
+        bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_OS_LINUX_ANDROID=1']
 
     bld.stlib(features = 'cxx',
               source   = ['gtest/src/gtest-all.cc'],
