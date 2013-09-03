@@ -8,6 +8,10 @@ Latest
 ------
 * TBD
 
+2.1.3
+-----
+* Bugfix: Simplify pthread shared library usage on Linux
+
 2.1.2
 -----
 * Bugfix: Allow compilation without using a makespec
