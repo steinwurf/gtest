@@ -522,10 +522,9 @@
 #  define GTEST_ENV_HAS_TR1_TUPLE_ 1
 # endif
 
-// C++11 specifies that <tuple> provides std::tuple. Use that if gtest is used
-// in C++11 mode and libstdc++ isn't very old (binaries targeting OS X 10.6
-// can build with clang but need to use gcc4.2's libstdc++).
-# if GTEST_LANG_CXX11 && (!defined(__GLIBCXX__) || __GLIBCXX__ > 20110325)
+// C++11 specifies that <tuple> provides std::tuple.
+// Always use that if gtest is used in C++11 mode.
+# if GTEST_LANG_CXX11
 #  define GTEST_ENV_HAS_STD_TUPLE_ 1
 # endif
 
