@@ -60,6 +60,9 @@ def build(bld):
               export_includes = ['gtest/include'],
               use = use_flags)
 
+    if bld.is_toplevel():
+
+        bld.recurse('test')
 
 
 
