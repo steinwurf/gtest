@@ -7,29 +7,25 @@ VERSION = '2.1.3'
 
 def options(opt):
 
-    import waflib.extras.wurf_dependency_bundle as bundle
-    import waflib.extras.wurf_dependency_resolve as resolve
-
-    bundle.add_dependency(opt, resolve.ResolveGitMajorVersion(
-        name='waf-tools',
-        git_repository='github.com/steinwurf/external-waf-tools.git',
-        major_version=2))
-
-    opt.load('wurf_configure_output')
-    opt.load("wurf_dependency_bundle")
-    opt.load('wurf_tools')
+    opt.load('wurf_common_tools')
 
 
 def configure(conf):
 
-    if conf.is_toplevel():
-        conf.load("wurf_dependency_bundle")
-        conf.load("wurf_tools")
+    import waflib.extras.wurf_dependency_bundle as bundle
+    import waflib.extras.wurf_dependency_resolve as resolve
 
-        conf.load_external_tool('mkspec', 'wurf_cxx_mkspec_tool')
-        conf.load_external_tool('runners', 'wurf_runner')
-        conf.load_external_tool('install_path', 'wurf_install_path')
-        conf.load_external_tool('project_gen', 'wurf_project_generator')
+    # waf-tools must be the first dependency
+    bundle.add_dependency(conf, resolve.ResolveGitMajorVersion(
+        name='waf-tools',
+        git_repository='github.com/steinwurf/waf-tools.git',
+        major_version=2))
+
+    if conf.is_toplevel():
+
+        # Download and recurse all dependencies
+        conf.load("wurf_common_tools")
+
 
     if conf.is_mkspec_platform('linux'):
         if not conf.env['LIB_PTHREAD']:
@@ -38,6 +34,10 @@ def configure(conf):
 
 
 def build(bld):
+
+    if bld.is_toplevel():
+
+        bld.load("wurf_common_tools")
 
     use_flags = ['GTEST_SHARED']
 
