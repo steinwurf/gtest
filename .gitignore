@@ -11,6 +11,13 @@
 *.la
 *.a
 
+# gtest specific files and folders
+.dirstamp
+.deps
+*.Po
+*.Plo
+*.pump
+
 # Python
 *.pyc
 
