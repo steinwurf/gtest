@@ -1,25 +1,24 @@
 #! /usr/bin/env python
 # encoding: utf-8
 
-import os
-
 APPNAME = 'gtest'
 VERSION = '2.1.3'
+
 
 def options(opt):
 
     import waflib.extras.wurf_dependency_bundle as bundle
     import waflib.extras.wurf_dependency_resolve as resolve
-    import waflib.extras.wurf_configure_output
 
-    bundle.add_dependency(opt,
-        resolve.ResolveGitMajorVersion(
-            name = 'waf-tools',
-            git_repository = 'github.com/steinwurf/external-waf-tools.git',
-            major_version = 2))
+    bundle.add_dependency(opt, resolve.ResolveGitMajorVersion(
+        name='waf-tools',
+        git_repository='github.com/steinwurf/external-waf-tools.git',
+        major_version=2))
 
+    opt.load('wurf_configure_output')
     opt.load("wurf_dependency_bundle")
     opt.load('wurf_tools')
+
 
 def configure(conf):
 
@@ -33,11 +32,10 @@ def configure(conf):
         conf.load_external_tool('project_gen', 'wurf_project_generator')
 
     if conf.is_mkspec_platform('linux'):
-
         if not conf.env['LIB_PTHREAD']:
-
             # If we have not looked for pthread yet
-            conf.check_cxx(lib = 'pthread')
+            conf.check_cxx(lib='pthread')
+
 
 def build(bld):
 
@@ -53,16 +51,9 @@ def build(bld):
     if bld.is_mkspec_platform('android'):
         bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_OS_LINUX_ANDROID=1']
 
-    bld.stlib(features = 'cxx',
-              source   = ['gtest/src/gtest-all.cc'],
-              target   = 'gtest',
-              includes = ['gtest/include', 'gtest'],
-              export_includes = ['gtest/include'],
-              use = use_flags)
-
-    if bld.is_toplevel():
-
-        bld.recurse('test')
-
-
-
+    bld.stlib(features='cxx',
+              source=['gtest/src/gtest-all.cc'],
+              target='gtest',
+              includes=['gtest/include', 'gtest'],
+              export_includes=['gtest/include'],
+              use=use_flags)

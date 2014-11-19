@@ -6,6 +6,9 @@ We use Google C++ Testing Framework to test most of our libraries.
 We use Waf to cross-compile gtest for the different platforms that
 we support. We provide the Waf and wscript files needed to build the gtest library.
 
+.. image:: http://buildbot.steinwurf.dk/svgstatus?project=gtest
+    :target: http://buildbot.steinwurf.dk/stats?projects=gtest
+
 Dependencies
 ------------
 
