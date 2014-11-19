@@ -12,7 +12,7 @@ def options(opt):
 
     bundle.add_dependency(opt, resolve.ResolveGitMajorVersion(
         name='waf-tools',
-        git_repository='github.com/steinwurf/external-waf-tools.git',
+        git_repository='github.com/steinwurf/waf-tools.git',
         major_version=2))
 
     opt.load('wurf_configure_output')
@@ -57,3 +57,6 @@ def build(bld):
               includes=['gtest/include', 'gtest'],
               export_includes=['gtest/include'],
               use=use_flags)
+
+    if bld.is_toplevel():
+        bld.recurse('test')
