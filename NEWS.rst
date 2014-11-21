@@ -6,7 +6,8 @@ of every change, see the Git log.
 
 Latest
 ------
-* Minor: Update to waf 1.8.0-pre1
+* Minor: Upgraded to gtest 1.7.0 and removed all unused files
+* Minor: Updated to waf 1.8.0-pre1
 * Minor: Made python files comply with pep8
 
 2.1.3
