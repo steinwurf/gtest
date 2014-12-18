@@ -55,7 +55,7 @@ def build(bld):
               source=['gtest/src/gtest-all.cc'],
               target='gtest',
               includes=['gtest/include', 'gtest'],
-              export_includes=['gtest/include'],
+              export_includes=['gtest/include', 'src'],
               use=use_flags)
 
     if bld.is_toplevel():
