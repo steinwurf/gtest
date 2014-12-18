@@ -32,6 +32,10 @@ namespace gtest
     /// Returns a string representing the Steinwurf version of this library.
     inline std::string version()
     {
-        return "2.2.0";
+        #ifdef GTEST_VERSION
+        return GTEST_VERSION;
+        #else
+        return "unknown";
+        #endif
     }
 }
