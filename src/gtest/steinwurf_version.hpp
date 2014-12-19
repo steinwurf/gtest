@@ -23,10 +23,19 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <gtest/gtest.h>
-#include <gtest/version.hpp>
+#pragma once
 
-TEST(TestVersion, not_empty)
+#include <string>
+
+namespace gtest
 {
-    EXPECT_FALSE(gtest::version().empty());
+    /// Returns a string representing the Steinwurf version of this library.
+    inline std::string steinwurf_version()
+    {
+        #ifdef STEINWURF_GTEST_VERSION
+        return STEINWURF_GTEST_VERSION;
+        #else
+        return "unknown";
+        #endif
+    }
 }
