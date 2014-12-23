@@ -57,8 +57,7 @@ def build(bld):
         target='gtest',
         includes=['gtest/include', 'gtest'],
         export_includes=['gtest/include', 'src'],
-        export_defines=[
-            'STEINWURF_{}_VERSION="{}"'.format(APPNAME.upper(), VERSION)],
+        export_defines=['STEINWURF_GTEST_VERSION="{}"'.format(VERSION)],
         use=use_flags)
 
     if bld.is_toplevel():
