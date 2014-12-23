@@ -56,7 +56,7 @@ def build(bld):
         source=['gtest/src/gtest-all.cc'],
         target='gtest',
         includes=['gtest/include', 'gtest'],
-        export_includes=['gtest/include', 'src'],
+        export_includes=['gtest/include'],
         export_defines=['STEINWURF_GTEST_VERSION="{}"'.format(VERSION)],
         use=use_flags)
 
