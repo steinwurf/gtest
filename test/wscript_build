@@ -2,12 +2,7 @@
 # encoding: utf-8
 
 bld.program(
-    features = 'cxx test',
-    source   = ['gtest_tests.cpp'] + bld.path.ant_glob('src/*.cpp'),
-    target   = 'gtest_tests',
-    use      = ['gtest'])
-
-
-
-
-
+    features='cxx test',
+    source=['gtest_tests.cpp'] + bld.path.ant_glob('src/*.cpp'),
+    target='gtest_tests',
+    use=['gtest'])

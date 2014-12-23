@@ -51,12 +51,14 @@ def build(bld):
     if bld.is_mkspec_platform('android'):
         bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_OS_LINUX_ANDROID=1']
 
-    bld.stlib(features='cxx',
-              source=['gtest/src/gtest-all.cc'],
-              target='gtest',
-              includes=['gtest/include', 'gtest'],
-              export_includes=['gtest/include'],
-              use=use_flags)
+    bld.stlib(
+        features='cxx',
+        source=['gtest/src/gtest-all.cc'],
+        target='gtest',
+        includes=['gtest/include', 'gtest'],
+        export_includes=['gtest/include', 'src'],
+        export_defines=['STEINWURF_GTEST_VERSION="{}"'.format(VERSION)],
+        use=use_flags)
 
     if bld.is_toplevel():
         bld.recurse('test')

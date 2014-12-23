@@ -23,32 +23,19 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#include <gtest/gtest.h>
+#pragma once
 
-#include <cstdint>
-#include <vector>
+#include <string>
 
-TEST(BasicTest, comparisons)
+namespace gtest
 {
-    uint32_t num = 42;
-
-    EXPECT_EQ(42U, num);
-    EXPECT_TRUE(num == 42U);
-    EXPECT_FALSE(num == 0);
-    EXPECT_GT(num, 41U);
-    EXPECT_GE(num, 42U);
-    EXPECT_LT(num, 43U);
-    EXPECT_LE(num, 42U);
-}
-
-TEST(BasicTest, vector)
-{
-    std::vector<uint32_t> v1 = {0, 1, 2, 3, 4, 5};
-
-    EXPECT_EQ(6U, v1.size());
-
-    for (uint32_t i = 0; i < v1.size(); i++)
+    /// Returns a string representing the Steinwurf version of this library.
+    inline std::string steinwurf_version()
     {
-        EXPECT_EQ(i, v1[i]);
+        #ifdef STEINWURF_GTEST_VERSION
+        return STEINWURF_GTEST_VERSION;
+        #else
+        return "unknown";
+        #endif
     }
 }
