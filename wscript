@@ -39,6 +39,10 @@ def configure(conf):
 
 def build(bld):
 
+    bld.env.append_unique(
+        'DEFINES_STEINWURF_VERSION',
+        'STEINWURF_GTEST_VERSION="{}"'.format(VERSION))
+
     use_flags = ['GTEST_SHARED']
 
     if bld.is_mkspec_platform('linux'):
@@ -57,7 +61,6 @@ def build(bld):
         target='gtest',
         includes=['gtest/include', 'gtest'],
         export_includes=['gtest/include'],
-        export_defines=['STEINWURF_GTEST_VERSION="{}"'.format(VERSION)],
         use=use_flags)
 
     if bld.is_toplevel():
