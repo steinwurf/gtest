@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 APPNAME = 'gtest'
-VERSION = '2.3.0'
+VERSION = '2.3.1'
 
 
 def options(opt):
