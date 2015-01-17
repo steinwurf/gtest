@@ -1,36 +1,51 @@
-News for external-gtest
-=======================
+News for gtest
+==============
 
 This file lists the major changes between versions. For a more detailed list
 of every change, see the Git log.
 
 Latest
 ------
-* Minor: Update to waf 1.8.0-pre1
+* tbd
+
+2.3.1
+-----
+* Patch: Fix version define.
+
+2.3.0
+-----
+* Minor: Added version define.
+
+2.2.0
+-----
+* Minor: Added basic unit test to check any runtime issues
+* Minor: Upgraded to gtest 1.7.0 and removed all unused files
+* Minor: Updated to waf 1.8.0-pre1
 * Minor: Made python files comply with pep8
 
 2.1.3
 -----
-* Bugfix: Simplify pthread shared library usage on Linux
+* Patch: Simplify pthread shared library usage on Linux
 
 2.1.2
 -----
-* Bugfix: Allow compilation without using a makespec
+* Patch: Allow compilation without using a makespec
 
 2.1.1
 -----
-* Bugfix: Compile gtest without pthread support for crosslinux builds to avoid
+* Patch: Compile gtest without pthread support for crosslinux builds to avoid
   compatibility issues with the system pthread library
 
 2.1.0
 -----
 * Minor: Updated to waf-tools 2
 * Minor: Updated to waf 1.7.10
-* Bugfix: Replaced _NSGetEnviron() call on Mac and iOS with POSIX 'environ' variable
+* Patch: Replaced _NSGetEnviron() call on Mac and iOS with POSIX 'environ'
+  variable
 
 2.0.7
 -----
-* Bugfix: Always include std::tuple from <tuple> in order to compile
+* Patch: Always include std::tuple from <tuple> in order to compile
   with clang's C++ library.
 * Minor: Removed all binary files
 

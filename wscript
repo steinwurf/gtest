@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 APPNAME = 'gtest'
-VERSION = '2.1.3'
+VERSION = '2.3.1'
 
 
 def options(opt):
@@ -35,6 +35,10 @@ def configure(conf):
 
 def build(bld):
 
+    bld.env.append_unique(
+        'DEFINES_STEINWURF_VERSION',
+        'STEINWURF_GTEST_VERSION="{}"'.format(VERSION))
+
     if bld.is_toplevel():
 
         bld.load("wurf_common_tools")
@@ -51,9 +55,13 @@ def build(bld):
     if bld.is_mkspec_platform('android'):
         bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_OS_LINUX_ANDROID=1']
 
-    bld.stlib(features='cxx',
+    bld.stlib(
+        features='cxx',
               source=['gtest/src/gtest-all.cc'],
               target='gtest',
               includes=['gtest/include', 'gtest'],
               export_includes=['gtest/include'],
               use=use_flags)
+
+    if bld.is_toplevel():
+        bld.recurse('test')
