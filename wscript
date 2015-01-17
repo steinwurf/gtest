@@ -39,10 +39,6 @@ def build(bld):
         'DEFINES_STEINWURF_VERSION',
         'STEINWURF_GTEST_VERSION="{}"'.format(VERSION))
 
-    if bld.is_toplevel():
-
-        bld.load("wurf_common_tools")
-
     use_flags = ['GTEST_SHARED']
 
     if bld.is_mkspec_platform('linux'):
@@ -57,11 +53,15 @@ def build(bld):
 
     bld.stlib(
         features='cxx',
-              source=['gtest/src/gtest-all.cc'],
-              target='gtest',
-              includes=['gtest/include', 'gtest'],
-              export_includes=['gtest/include'],
-              use=use_flags)
+        source=['gtest/src/gtest-all.cc'],
+        target='gtest',
+        includes=['gtest/include', 'gtest'],
+        export_includes=['gtest/include'],
+        use=use_flags)
 
     if bld.is_toplevel():
+
+        bld.load("wurf_common_tools")
+
         bld.recurse('test')
+
