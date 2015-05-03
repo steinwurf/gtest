@@ -6,21 +6,27 @@ VERSION = '2.3.1'
 
 import waflib.extras.wurf_options
 
+
 def options(opt):
 
     opt.load('wurf_common_tools')
 
 
-def configure(conf):
+def resolve(ctx):
 
     import waflib.extras.wurf_dependency_resolve as resolve
 
-    conf.load('wurf_common_tools')
+    ctx.load('wurf_common_tools')
 
-    conf.add_dependency(resolve.ResolveVersion(
+    ctx.add_dependency(resolve.ResolveVersion(
         name='waf-tools',
         git_repository='github.com/steinwurf/waf-tools.git',
         major=2))
+
+
+def configure(conf):
+
+    conf.load('wurf_common_tools')
 
     if conf.is_mkspec_platform('linux'):
         if not conf.env['LIB_PTHREAD']:
