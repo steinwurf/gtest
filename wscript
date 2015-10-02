@@ -21,7 +21,7 @@ def resolve(ctx):
     ctx.add_dependency(resolve.ResolveVersion(
         name='waf-tools',
         git_repository='github.com/steinwurf/waf-tools.git',
-        major=2))
+        major=3))
 
 
 def configure(conf):
