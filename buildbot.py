@@ -44,10 +44,9 @@ def configure(properties):
             properties['dependency_project'],
             properties['dependency_checkout'])]
 
-    options = ["--cxx_mkspec={}".format(properties['cxx_mkspec'])]
-    options += get_tool_options(properties)
+    command += ["--cxx_mkspec={}".format(properties['cxx_mkspec'])]
+    command += get_tool_options(properties)
 
-    command += options
     run_command(command)
 
 
@@ -58,31 +57,27 @@ def build(properties):
 
 def run_tests(properties):
     command = [sys.executable, 'waf', '-v', '--run_tests']
-    options = []
     run_cmd = None
 
     if properties.get('valgrind_run'):
         run_cmd = 'valgrind --error-exitcode=1 %s'
 
     if run_cmd:
-        options += ["--run_cmd={}".format(run_cmd)]
+        command += ["--run_cmd={}".format(run_cmd)]
 
-    options += get_tool_options(properties)
+    command += get_tool_options(properties)
 
-    command += options
     run_command(command)
 
 
 def install(properties):
     command = [sys.executable, 'waf', '-v', 'install']
 
-    options = []
     if 'install_path' in properties:
-        options += ['--install_path={0}'.format(properties['install_path'])]
+        command += ['--install_path={0}'.format(properties['install_path'])]
     if properties.get('install_relative'):
-        options += ['--install_relative']
+        command += ['--install_relative']
 
-    command += options
     run_command(command)
 
 
