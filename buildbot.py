@@ -47,7 +47,7 @@ def configure(properties):
     options = ["--cxx_mkspec={}".format(properties['cxx_mkspec'])]
     options += get_tool_options(properties)
 
-    command += [options]
+    command += options
     run_command(command)
 
 
@@ -69,7 +69,7 @@ def run_tests(properties):
 
     options += get_tool_options(properties)
 
-    command += [options]
+    command += options
     run_command(command)
 
 
@@ -82,7 +82,7 @@ def install(properties):
     if properties.get('install_relative'):
         options += ['--install_relative']
 
-    command += [options]
+    command += options
     run_command(command)
 
 
