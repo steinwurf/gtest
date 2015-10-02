@@ -8,6 +8,10 @@ Latest
 ------
 * tbd
 
+3.0.0
+-----
+* Major: Upgrade to waf-tools 3
+
 2.3.1
 -----
 * Patch: Fix version define.

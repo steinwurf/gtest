@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 APPNAME = 'gtest'
-VERSION = '2.3.1'
+VERSION = '3.0.0'
 
 import waflib.extras.wurf_options
 
