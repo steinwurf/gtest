@@ -4,17 +4,6 @@
 APPNAME = 'gtest'
 VERSION = '3.0.0'
 
-def resolve(ctx):
-
-    ctx.add_dependency(
-        name='waf-tools',
-        recurse=True,
-        optional=False,
-        resolver='git',
-        method='semver',
-        major=3,
-        sources=['github.com/steinwurf/waf-tools.git'])
-
 
 def configure(conf):
 
