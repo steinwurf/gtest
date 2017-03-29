@@ -8,6 +8,10 @@ Latest
 ------
 * tbd
 
+4.0.0
+-----
+* Major: Upgrade to waf-tools 4
+
 3.0.0
 -----
 * Major: Upgrade to waf-tools 3
