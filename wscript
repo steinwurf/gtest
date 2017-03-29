@@ -4,29 +4,8 @@
 APPNAME = 'gtest'
 VERSION = '3.0.0'
 
-import waflib.extras.wurf_options
-
-
-def options(opt):
-
-    opt.load('wurf_common_tools')
-
-
-def resolve(ctx):
-
-    import waflib.extras.wurf_dependency_resolve as resolve
-
-    ctx.load('wurf_common_tools')
-
-    ctx.add_dependency(resolve.ResolveVersion(
-        name='waf-tools',
-        git_repository='github.com/steinwurf/waf-tools.git',
-        major=3))
-
 
 def configure(conf):
-
-    conf.load('wurf_common_tools')
 
     if conf.is_mkspec_platform('linux'):
         if not conf.env['LIB_PTHREAD']:
@@ -35,8 +14,6 @@ def configure(conf):
 
 
 def build(bld):
-
-    bld.load('wurf_common_tools')
 
     bld.env.append_unique(
         'DEFINES_STEINWURF_VERSION',
