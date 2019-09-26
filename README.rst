@@ -1,13 +1,13 @@
 About
 =====
 
+.. image:: https://travis-ci.org/steinwurf/gtest.svg?branch=master
+    :target: https://travis-ci.org/steinwurf/gtest
+    
 We use the Google C++ Testing Framework to test most of our libraries.
 
 We use Waf to compile gtest for various platforms. We provide the Waf and
 wscript files needed to build the gtest library.
-
-.. image:: https://travis-ci.org/steinwurf/gtest.svg?branch=master
-    :target: https://travis-ci.org/steinwurf/gtest
 
 Dependencies
 ------------
