@@ -23,9 +23,6 @@ def build(bld):
     if bld.is_mkspec_platform('linux'):
         use_flags += ['PTHREAD']
 
-    if bld.is_mkspec_platform('android'):
-        bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_OS_LINUX_ANDROID=1']
-
     src = bld.dependency_node("gtest-source").find_dir('googletest')
     includes = src.find_dir('include')
 
