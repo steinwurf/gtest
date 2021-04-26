@@ -19,24 +19,22 @@ def build(bld):
         'DEFINES_STEINWURF_VERSION',
         'STEINWURF_GTEST_VERSION="{}"'.format(VERSION))
 
-    use_flags = ['GTEST_SHARED']
-
+    use_flags = []
     if bld.is_mkspec_platform('linux'):
         use_flags += ['PTHREAD']
-
-    # Remove this when msvc supports variadic templates
-    if bld.is_mkspec_platform('windows'):
-        bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_HAS_TR1_TUPLE=0']
 
     if bld.is_mkspec_platform('android'):
         bld.env['DEFINES_GTEST_SHARED'] += ['GTEST_OS_LINUX_ANDROID=1']
 
+    src = bld.dependency_node("gtest-source").find_dir('googletest')
+    includes = src.find_dir('include')
+
     bld.stlib(
         features='cxx',
-        source=['gtest/src/gtest-all.cc'],
+        source=[src.find_resource('src/gtest-all.cc')],
         target='gtest',
-        includes=['gtest/include', 'gtest'],
-        export_includes=['gtest/include'],
+        includes=[includes, src],
+        export_includes=[includes],
         use=use_flags)
 
     if bld.is_toplevel():

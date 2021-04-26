@@ -26,10 +26,10 @@ Use
 Download the source from github by cloning the repository.
 Issue this command in your terminal::
   
-    git clone git://github.com/steinwurf/external-gtest.git
+    git clone git://github.com/steinwurf/gtest.git
 
 To build the libraries for your host platform:: 
 
-    cd external-gtest
+    cd gtest
     python waf configure
     python waf build

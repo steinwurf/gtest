@@ -5,5 +5,14 @@
         "method": "semver",
         "major": 4,
         "sources": ["github.com/steinwurf/waf-tools.git"]
+    },
+    {
+        "name": "gtest-source",
+        "resolver": "git",
+        "method": "checkout",
+        "checkout": "release-1.10.0",
+        "sources": [
+            "github.com/google/googletest.git"
+        ]
     }
 ]
