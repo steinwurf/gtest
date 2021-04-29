@@ -24,7 +24,10 @@ Usage
 
 Clone this repository to a suitable folder::
 
-    git clone git@github.com:steinwurf/gtest.git
+Download the source from github by cloning the repository.
+Issue this command in your terminal::
+  
+    git clone git://github.com/steinwurf/gtest.git
 
 Configure and build the project::
 

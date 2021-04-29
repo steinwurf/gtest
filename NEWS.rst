@@ -6,7 +6,7 @@ of every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Minor: Use the https://github.com/google/googletest repository.
 
 4.0.0
 -----
