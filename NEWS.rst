@@ -8,6 +8,10 @@ Latest
 ------
 * tbd
 
+4.2.1
+-----
+* Patch: Added Steinwurf aliases for CMake targets
+
 4.2.0
 -----
 * Minor: CMake support
