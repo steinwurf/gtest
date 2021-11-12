@@ -18,3 +18,6 @@ if (NOT DEFINED STEINWURF_RESOLVE)
 endif ()
 
 add_subdirectory("${STEINWURF_RESOLVE}/gtest-source" gtest EXCLUDE_FROM_ALL)
+
+add_library(steinwurf::gtest ALIAS gtest)
+add_library(steinwurf::gmock ALIAS gmock)
