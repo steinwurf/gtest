@@ -6,6 +6,12 @@ of every change, see the Git log.
 
 Latest
 ------
+* tbd
+
+4.2.0
+-----
+* Minor: CMake support
+* Minor: Bumped gtest to 1.11.0
 * Minor: Updated waf.
 
 4.1.0
