@@ -8,6 +8,16 @@ Latest
 ------
 * tbd
 
+4.2.1
+-----
+* Patch: Added Steinwurf aliases for CMake targets
+
+4.2.0
+-----
+* Minor: CMake support
+* Minor: Bumped gtest to 1.11.0
+* Minor: Updated waf.
+
 4.1.0
 -----
 * Minor: Use the https://github.com/google/googletest repository.
