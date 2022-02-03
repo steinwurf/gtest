@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 APPNAME = 'gtest'
-VERSION = "4.2.1"
+VERSION = "4.2.2"
 
 
 def configure(conf):

@@ -6,6 +6,11 @@ of every change, see the Git log.
 
 Latest
 ------
+* tbd
+
+4.2.2
+-----
+
 * Patch: For Windows: Prevent overriding the parent project's compiler/linker
   settings
 
