@@ -17,6 +17,14 @@ if (NOT DEFINED STEINWURF_RESOLVE)
     set(STEINWURF_TOP_NAME ${PROJECT_NAME})
 endif ()
 
+if(CMAKE_C_COMPILER_ID MATCHES "MSVC")
+    # For Windows: Prevent overriding the parent project's compiler/linker
+    # settings
+    set(gtest_force_shared_crt
+            ON
+            CACHE BOOL "" FORCE)
+endif()
+
 add_subdirectory("${STEINWURF_RESOLVE}/gtest-source" gtest EXCLUDE_FROM_ALL)
 
 add_library(steinwurf::gtest ALIAS gtest)
