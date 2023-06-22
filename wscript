@@ -10,7 +10,7 @@ def configure(conf):
         if not conf.env["LIB_PTHREAD"]:
             # If we have not looked for pthread yet
             conf.check_cxx(lib="pthread")
-    conf.set_cxx_standard(11)
+    conf.set_cxx_std(11)
 
 
 def build(bld):
