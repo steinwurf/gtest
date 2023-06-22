@@ -3,7 +3,7 @@
         "name": "waf-tools",
         "resolver": "git",
         "method": "checkout",
-        "checkout": "35e204bb58d59ea1a796dc6f3d2537910271084e",
+        "checkout": "7347867d592244a403b8ede4faefe99eb59db98b",
         "sources": [
             "github.com/steinwurf/waf-tools.git"
         ]
