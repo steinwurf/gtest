@@ -2,9 +2,11 @@
     {
         "name": "waf-tools",
         "resolver": "git",
-        "method": "semver",
-        "major": 4,
-        "sources": ["github.com/steinwurf/waf-tools.git"]
+        "method": "checkout",
+        "checkout": "35e204bb58d59ea1a796dc6f3d2537910271084e",
+        "sources": [
+            "github.com/steinwurf/waf-tools.git"
+        ]
     },
     {
         "name": "gtest-source",
