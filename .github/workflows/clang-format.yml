@@ -1,15 +1,13 @@
 name: Clang-Format
-on:
-  workflow_dispatch:
+'on':
+  workflow_dispatch: null
   schedule:
-    - cron: "0 1 * * *" # 3 AM CET
-  push:
-  pull_request:
+  - cron: 0 1 * * *
+  push: null
+  pull_request: null
 jobs:
   Clang-Format:
     uses: steinwurf/clang-format-action/.github/workflows/action.yml@4.0.0
-
-# Cancel previous in-progress when pushing: https://stackoverflow.com/a/72408109
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
