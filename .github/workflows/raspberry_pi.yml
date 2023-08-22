@@ -1,14 +1,14 @@
 name: Raspberry Pi
 'on':
-  workflow_dispatch:
+- workflow_dispatch:
     inputs:
       extra_resolve_options:
         description: Extra Resolve Options
         required: false
-  push:
+- push:
     branches:
     - master
-  pull_request: ''
+- pull_request
 jobs:
   RaspberryPi:
     uses: steinwurf/cross-compile-action/.github/workflows/action.yml@6.0.0
