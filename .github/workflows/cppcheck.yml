@@ -1,4 +1,5 @@
-{concurrency: {cancel-in-progress: true, group: '${{ github.workflow }}-${{ github.ref
-      || github.run_id }}'}, jobs: {docker_check: {name: Cppcheck, uses: steinwurf/cppcheck-action/.github/workflows/action.yml@2.0.0}},
-  name: Cppcheck, 'on': {push: {branches: [master]}, schedule: [{cron: 0 1 * * *}],
-    workflow_dispatch: null}}
+name
+--- 'on'
+--- concurrency
+--- jobs
+...
