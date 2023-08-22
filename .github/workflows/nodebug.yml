@@ -1,14 +1,14 @@
 name: No Assertions
 'on':
-- workflow_dispatch:
+  workflow_dispatch:
     inputs:
       extra_resolve_options:
         description: Extra Resolve Options
         required: false
-- push:
+  push:
     branches:
     - master
-- pull_request
+  pull_request:
 jobs:
   ndebug:
     name: No Assertions
