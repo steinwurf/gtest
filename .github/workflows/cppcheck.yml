@@ -1,9 +1,14 @@
 name: Cppcheck
 'on':
-  workflow_dispatch: null
-  schedule:
-  - cron: 0 1 * * *
-  push: null
+  workflow_dispatch:
+    inputs:
+      extra_resolve_options:
+        description: Extra Resolve Options
+        required: false
+  push:
+    branches:
+    - master
+  pull_request: ''
 jobs:
   docker_check:
     name: Cppcheck
