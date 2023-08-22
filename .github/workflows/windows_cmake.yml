@@ -1,14 +1,14 @@
 name: Windows Cmake
 'on':
-  workflow_dispatch:
+- workflow_dispatch:
     inputs:
       extra_resolve_options:
         description: Extra Resolve Options
         required: false
-  push:
+- push:
     branches:
     - master
-  pull_request: ''
+- pull_request
 env:
   EXTRA_RESOLVE_OPTIONS: ${{ github.event.inputs.extra_resolve_options }}
 jobs:
