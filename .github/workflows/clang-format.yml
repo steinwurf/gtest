@@ -1,4 +1,5 @@
-{concurrency: {cancel-in-progress: true, group: '${{ github.workflow }}-${{ github.ref
-      || github.run_id }}'}, jobs: {Clang-Format: {uses: steinwurf/clang-format-action/.github/workflows/action.yml@4.0.0}},
-  name: Clang-Format, 'on': {pull_request: null, push: {branches: [master]}, schedule: [
-      {cron: 0 1 * * *}], workflow_dispatch: null}}
+name
+--- 'on'
+--- concurrency
+--- jobs
+...
