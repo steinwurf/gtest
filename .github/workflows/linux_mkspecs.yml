@@ -15,9 +15,7 @@ jobs:
     with:
       extra_resolve_options: ${{ github.event.inputs.extra_resolve_options }}
 
-concurrency:
-  group: ${ github.workflow }-${ github.ref || github.run_id }
-  cancel-in-progress: true
+
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
