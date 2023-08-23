@@ -22,9 +22,6 @@ jobs:
       test_runner: raspberry_pi
       test_binary_name: rely_tests
       test_binary_directory: build/cxx_raspberry_gxx83_armv7/test
-      test_files: test/encode_decode_decoder.json test/encode_decode_encoder.json
-        test/symbol_encode_decode_symbol_encoder.json test/symbol_encode_decode_symbol_decoder.json
-        test/symbol_encode_decode_encode_queue.json
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
