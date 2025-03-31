@@ -6,7 +6,7 @@ of every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Major: Update to Gtest v1.16.0
 
 
 5.0.0
