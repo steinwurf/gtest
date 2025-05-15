@@ -29,3 +29,20 @@ add_subdirectory("${STEINWURF_RESOLVE}/gtest-source" gtest EXCLUDE_FROM_ALL)
 
 add_library(steinwurf::gtest ALIAS gtest)
 add_library(steinwurf::gmock ALIAS gmock)
+
+if(${PROJECT_NAME} STREQUAL ${CMAKE_PROJECT_NAME})
+
+
+  # Build test executable
+  file(GLOB_RECURSE gtest_test_sources ./test/*.cpp)
+
+
+  add_executable(np_gtest_tests ${gtest_test_sources})
+  target_link_libraries(np_gtest_tests gtest_main)
+  target_link_libraries(np_gtest_tests steinwurf::gtest)
+
+  add_test(np_gtest_tests np_gtest_tests)
+
+endif()
+
+
