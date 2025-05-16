@@ -13,15 +13,13 @@ def configure(ctx):
 
     ctx.load("cmake")
 
+    if ctx.is_toplevel():
+        ctx.cmake_configure()
+
 
 def build(ctx):
 
     ctx.load("cmake")
 
-
-def clean(ctx):
-
-    ctx.load("cmake")
-
-    # Set the default clean paths
-    ctx.clean_paths = ["build", "build_current"]
+    if ctx.is_toplevel():
+        ctx.cmake_build()
