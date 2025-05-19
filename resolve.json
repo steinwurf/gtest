@@ -3,9 +3,19 @@
         "name": "gtest-source",
         "resolver": "git",
         "method": "checkout",
-        "checkout": "release-1.11.0",
+        "checkout": "v1.17.0",
         "sources": [
             "github.com/google/googletest.git"
+        ]
+    },
+    {
+        "name": "toolchains",
+        "internal": true,
+        "resolver": "git",
+        "method": "checkout",
+        "checkout": "master",
+        "sources": [
+            "github.com/steinwurf/cmake-toolchains.git"
         ]
     }
 ]
