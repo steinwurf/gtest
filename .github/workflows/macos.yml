@@ -36,6 +36,11 @@ jobs:
         run: python3 waf configure --git_protocol=git@ --cmake_toolchain=${{ matrix.config.toolchain }} --cmake_verbose
       - name: Waf Build
         run: python3 waf build --run_tests
+      - name: debug
+        run: |
+          export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+          which clang
+          clang --version
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
