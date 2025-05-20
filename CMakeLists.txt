@@ -16,6 +16,9 @@ if(NOT DEFINED STEINWURF_RESOLVE)
   set(STEINWURF_RESOLVE "${CMAKE_CURRENT_SOURCE_DIR}/resolve_symlinks")
 endif()
 
+# Include common CMake settings
+include("${STEINWURF_RESOLVE}/toolchains/common_settings.cmake")
+
 if(CMAKE_C_COMPILER_ID MATCHES "MSVC")
   # For Windows: Prevent overriding the parent project's compiler/linker
   # settings
