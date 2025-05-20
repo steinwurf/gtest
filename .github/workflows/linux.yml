@@ -36,9 +36,9 @@ jobs:
       - name: Waf Clean
         run: python3 waf clean
       - name: Waf Configure
-        run: python3 waf configure --git_protocol=git@ --cmake-toolchain=${{ matrix.config.toolchain }} --cmake-verbose
+        run: python3 waf configure --git_protocol=git@ --cmake_toolchain=${{ matrix.config.toolchain }} --cmake_verbose
       - name: Waf Build
-        run: python3 waf build --run-tests
+        run: python3 waf build --run_tests
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true

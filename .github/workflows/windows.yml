@@ -19,9 +19,9 @@ jobs:
       - name: Waf Clean
         run: python waf clean
       - name: Waf Configure
-        run: python waf configure --git_protocol=git@  --cmake-verbose
+        run: python waf configure --git_protocol=git@  --cmake_verbose
       - name: Waf Build
-        run: python waf build --run-tests
+        run: python waf build --run_tests
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
