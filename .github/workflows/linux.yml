@@ -1,0 +1,44 @@
+name: Linux C++
+on:
+  schedule:
+    - cron: 0 1 * * *
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  docker_builds:
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - runner: ubuntu-current
+            name: GCC Latest
+            toolchain: "./resolve_symlinks/toolchains/gcc-toolchain.cmake"
+          - runner: ubuntu-current
+            name: Clang Latest
+            toolchain: "./resolve_symlinks/toolchains/clang-toolchain.cmake"
+          - runner: ubuntu-old
+            name: GCC Oldest
+            toolchain: "./resolve_symlinks/toolchains/gcc-toolchain.cmake"
+          - runner: ubuntu-old
+            name: Clang Oldest
+            toolchain: "./resolve_symlinks/toolchains/clang-toolchain.cmake"
+    runs-on:
+      - self-hosted
+      - vm
+      - ${{ matrix.config.runner }}
+    name: ${{ matrix.config.name }}
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      - name: Waf Clean
+        run: python3 waf clean
+      - name: Waf Configure
+        run: python3 waf configure --git_protocol=git@ --cmake-toolchain=${{ matrix.config.toolchain }} --cmake-verbose
+      - name: Waf Build
+        run: python3 waf build --run-tests
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true

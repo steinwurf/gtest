@@ -14,7 +14,6 @@ if(NOT DEFINED STEINWURF_RESOLVE)
     message(FATAL_ERROR "Failed: ${STATUS}")
   endif()
   set(STEINWURF_RESOLVE "${CMAKE_CURRENT_SOURCE_DIR}/resolve_symlinks")
-  set(STEINWURF_TOP_NAME ${PROJECT_NAME})
 endif()
 
 if(CMAKE_C_COMPILER_ID MATCHES "MSVC")
@@ -29,3 +28,19 @@ add_subdirectory("${STEINWURF_RESOLVE}/gtest-source" gtest EXCLUDE_FROM_ALL)
 
 add_library(steinwurf::gtest ALIAS gtest)
 add_library(steinwurf::gmock ALIAS gmock)
+
+if(${PROJECT_NAME} STREQUAL ${CMAKE_PROJECT_NAME})
+
+
+  # Build test executable
+  file(GLOB_RECURSE gtest_test_sources ./test/*.cpp)
+
+  add_executable(sw_gtest_tests ${gtest_test_sources})
+  target_link_libraries(sw_gtest_tests steinwurf::gtest)
+
+  enable_testing()
+  add_test(sw_gtest_tests sw_gtest_tests)
+
+endif()
+
+

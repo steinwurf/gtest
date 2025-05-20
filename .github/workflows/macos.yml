@@ -1,0 +1,41 @@
+name: MacOS
+on:
+  schedule:
+    - cron: 0 1 * * *
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  macos_cmake:
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - arch: ARM64
+            os: big_sur
+            name: Apple Big Sur (ARM)
+            toolchain: "./resolve_symlinks/toolchains/clang-toolchain.cmake"
+    runs-on:
+      [
+        self-hosted,
+        macOS,
+        "${{ matrix.config.os }}",
+        "${{ matrix.config.arch }}",
+        cmake,
+        builder,
+      ]
+    name: ${{ matrix.config.name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Waf Clean
+        run: python3 waf clean
+      - name: Waf Configure
+        run: python3 waf configure --git_protocol=git@ --cmake-toolchain=${{ matrix.config.toolchain }} --cmake-verbose
+      - name: Waf Build
+        run: python3 waf build --run-tests
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true

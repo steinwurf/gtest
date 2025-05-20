@@ -1,0 +1,27 @@
+name: Windows
+on:
+  schedule:
+    - cron: 0 1 * * *
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  windows_cmake:
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+    runs-on: [self-hosted, windows, vm, windows-current]
+    name: Windows
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Waf Clean
+        run: python waf clean
+      - name: Waf Configure
+        run: python waf configure --git_protocol=git@  --cmake-verbose
+      - name: Waf Build
+        run: python waf build --run-tests
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
