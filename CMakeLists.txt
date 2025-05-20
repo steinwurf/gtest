@@ -45,6 +45,7 @@ if(${PROJECT_NAME} STREQUAL ${CMAKE_PROJECT_NAME})
 
   add_executable(sw_gtest_tests ${gtest_test_sources})
   target_link_libraries(sw_gtest_tests steinwurf::gtest)
+  target_link_libraries(sw_gtest_tests gtest_main)
 
   enable_testing()
   add_test(sw_gtest_tests sw_gtest_tests)
