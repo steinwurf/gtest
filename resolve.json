@@ -12,8 +12,8 @@
         "name": "toolchains",
         "internal": true,
         "resolver": "git",
-        "method": "checkout",
-        "checkout": "master",
+        "method": "semver",
+        "major": 1,
         "sources": [
             "github.com/steinwurf/cmake-toolchains.git"
         ]
