@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 APPNAME = "gtest"
-VERSION = "6.0.0"
+VERSION = "6.0.1"
 
 
 def options(ctx):
