@@ -6,6 +6,10 @@ of every change, see the Git log.
 
 Latest
 ------
+* tbd
+
+6.0.0
+-----
 * Major: Updated to v1.17.0 of gtest
 * Major: Deprecated the use of waf build building the library. The library is now
   built using the gtest CMake build system. Waf remains wraps the CMake build
