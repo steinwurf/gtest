@@ -3,7 +3,7 @@
         "name": "gtest-source",
         "resolver": "git",
         "method": "checkout",
-        "checkout": "v1.17.0",
+        "checkout": "v1.16.0",
         "sources": [
             "github.com/google/googletest.git"
         ]
