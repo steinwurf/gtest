@@ -16,17 +16,7 @@ if(NOT DEFINED STEINWURF_RESOLVE)
   set(STEINWURF_RESOLVE "${CMAKE_CURRENT_SOURCE_DIR}/resolve_symlinks")
 endif()
 
-# Set code position independent
-if(CMAKE_SYSTEM_NAME MATCHES "Linux|Android|iOS|Darwin")
-  set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-endif()
 
-# On mac use -stdlib=libc++
-if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
-  set(CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_STANDARD_LIBRARIES} -lc++")
-  set(CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_STANDARD_LIBRARIES} -lc++abi")
-endif()
 
 # Include common CMake settings
 include("${STEINWURF_RESOLVE}/toolchains/common_settings.cmake")
