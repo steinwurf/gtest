@@ -24,7 +24,8 @@ jobs:
         "${{ matrix.config.os }}",
         "${{ matrix.config.arch }}",
         cmake,
-        builder
+        builder,
+        macos6
       ]
     name: ${{ matrix.config.name }}
     steps:
