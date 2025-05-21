@@ -6,7 +6,7 @@ of every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Patch: Lock the toolchain version to 1.0.0
 
 6.0.0
 -----
