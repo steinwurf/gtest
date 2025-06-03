@@ -1,0 +1,131 @@
+name: C++ External
+
+on:
+  schedule:
+    - cron: 0 1 * * *
+  push:
+    branches:
+      - master
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  linux_cmake:
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - runner: ubuntu-current
+            name: GCC Latest
+            toolchain: "./resolve_symlinks/toolchains/gcc-toolchain.cmake"
+          - runner: ubuntu-current
+            name: Clang Latest
+            toolchain: "./resolve_symlinks/toolchains/clang-toolchain.cmake"
+          - runner: ubuntu-old
+            name: GCC Oldest
+            toolchain: "./resolve_symlinks/toolchains/gcc-toolchain.cmake"
+          - runner: ubuntu-old
+            name: Clang Oldest
+            toolchain: "./resolve_symlinks/toolchains/clang-toolchain.cmake"
+    runs-on:
+      - self-hosted
+      - vm
+      - ${{ matrix.config.runner }}
+    name: ${{ matrix.config.name }}
+    steps:
+      - name: Ensure correct owner of repository
+        run: sudo chown -R actions-runner:actions-runner .
+      - name: Checkout source code
+        uses: actions/checkout@v3
+      - name: Waf Clean
+        run: python3 waf clean --no_resolve
+      - name: Waf Configure
+        run: python3 waf configure --git_protocol=git@ --cmake_toolchain=${{ matrix.config.toolchain }} --cmake_verbose
+      - name: Waf Build
+        run: python3 waf build --run_tests
+
+  zig_toolchain_build:
+    name: Zig Toolchain Build (Docker)
+    runs-on: [self-hosted, vm, ubuntu-current]
+    container:
+      image: kassany/bookworm-ziglang
+      options: --user 0:0
+      volumes:
+        - /root/.ssh:/root/.ssh
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y python3 python3-pip git cmake build-essential
+      - name: Waf Clean
+        run: python3 waf clean --no_resolve
+      - name: Waf Configure with Zig Toolchain
+        run: python3 waf configure --git_protocol=git@ --cmake_toolchain=../resolve_symlinks/toolchains/zig-toolchain-x86_64-linux-musl.cmake --cmake_verbose
+      - name: Waf Build with Zig Toolchain
+        run: python3 waf build --run_tests
+
+  macos_cmake:
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - arch: ARM64
+            os: big_sur
+            name: Apple Big Sur (ARM)
+            toolchain: "./resolve_symlinks/toolchains/clang-toolchain.cmake"
+    runs-on:
+      - self-hosted
+      - macOS
+      - ${{ matrix.config.os }}
+      - ${{ matrix.config.arch }}
+      - cmake
+      - builder
+    name: ${{ matrix.config.name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Waf Clean
+        run: python3 waf clean --no_resolve
+      - name: Waf Configure
+        run: python3 waf configure --git_protocol=git@ --cmake_toolchain=${{ matrix.config.toolchain }} --cmake_verbose
+      - name: Waf Build
+        run: python3 waf build --run_tests
+
+  windows_cmake:
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+    runs-on:
+      - self-hosted
+      - windows
+      - vm
+      - windows-current
+    name: Windows
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Waf Clean
+        run: python waf clean --no_resolve
+      - name: Waf Configure
+        run: python waf configure --git_protocol=git@ --cmake_verbose
+      - name: Waf Build
+        run: python waf build --run_tests
+
+  workflow-keepalive:
+    if: github.event_name == 'schedule'
+    runs-on: [self-hosted, vm, ubuntu-current]
+    permissions:
+      actions: write
+    steps:
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update
+          sudo apt install -y gh
+      - uses: liskin/gh-workflow-keepalive@v1
