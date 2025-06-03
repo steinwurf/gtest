@@ -6,7 +6,7 @@ of every change, see the Git log.
 
 Latest
 ------
-* tbd
+* Patch: Bump to gtest v1.17.0
 
 6.0.1
 -----
